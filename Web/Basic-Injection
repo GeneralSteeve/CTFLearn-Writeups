@@ -1,0 +1,17 @@
+Basic Injection
+
+The details of SQL and SQL injection are beyond the scope of a writeup such as this one. SQL is a language that is used to manage databases. SQL injection is an attack vector that takes advantage of improperly sanitized SQL queries.
+
+This challenge provides a website that queries a vulnerable SQL server. As this is a beginner-level problem, the developers were kind enough to provide the query that is being used:
+
+Original Query: SELECT * FROM webfour.webfour where name = '$input'
+
+The developers were also kind enough to display the query that the user last entered, along with the results.
+
+From the structure of the query, it is possible to determine an effective query to leak the contents of the database. We can see that the query makes a string of the input simply by adding an apostrophe before and after the entered string. This means that the string can be escaped by adding an apostrophe before and after our malicious injection. It is important to add the apostraphe afterword so that our added apostraphe is not made into part of the string.
+
+To leak the entire databse, the string is escaped with an apostrophe, type a *, and begin a new string with another apostraphe. The entered string should look as follows:
+
+'*'
+
+The website will display the entirety of the contents of the database once this string is entered. After the contents are leaked, all that one must do is visually inspect the data for the flag.
