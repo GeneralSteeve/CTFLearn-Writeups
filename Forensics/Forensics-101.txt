@@ -1,0 +1,7 @@
+Forensics 101
+
+This challenge provides the user with a link to an image file. Once this file is downloaded, it can properly be examined to find the flag.
+
+The flag is hidden as a string inside of the file. Running the command "strings" and searching for the flag will quickly reveal it's location.
+
+Hiding information as a string inside of a file in this manner is not secure. The sata is stored in plaintext, even if it is in an unusual form. This method of security, to me, falls under the umbrella of security by obscurity, to which the common refrain is "is no security at all". It could very well be possible to find this information by accident using a method that examines the contents of files without consideration of their file extensions. If a user wanted to keep such a string secure, it should be encrypted using a secure algorithm.
